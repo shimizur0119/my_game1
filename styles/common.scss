@@ -1,11 +1,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 
 body {
-  font-family: "Press Start 2P", cursive sans-serif;
+  font-family: "Press Start 2P", cursive;
   font-size: 20px;
   line-height: 180%;
   letter-spacing: 0.1em;
+  user-select: none;
 }
+
 @keyframes umi {
   0%,
   24% {
@@ -101,8 +103,7 @@ body {
 .viewContainer {
   position: relative;
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
   &__onElement {
     position: fixed;
     top: 0;
@@ -113,12 +114,12 @@ body {
     z-index: 20;
   }
   &__playerElement {
-    position: fixed;
+    position: relative;
     z-index: 10;
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
     .u-player {
       user-select: none;
       position: absolute;
