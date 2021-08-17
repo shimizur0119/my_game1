@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+
+body {
+  font-family: "Press Start 2P", cursive sans-serif;
+  font-size: 20px;
+  line-height: 180%;
+  letter-spacing: 0.1em;
+}
+@keyframes umi {
+  0%,
+  24% {
+    background-image: url("/images/map/umi_1.png");
+  }
+  25%,
+  49% {
+    background-image: url("/images/map/umi_2.png");
+  }
+  50%,
+  74% {
+    background-image: url("/images/map/umi_3.png");
+  }
+  75%,
+  100% {
+    background-image: url("/images/map/umi_4.png");
+  }
+}
+
+@keyframes majo_front {
+  0%,
+  24% {
+    background-image: url("/images/character/majo_f_2.png");
+  }
+  25%,
+  49% {
+    background-image: url("/images/character/majo_f_1.png");
+  }
+  50%,
+  74% {
+    background-image: url("/images/character/majo_f_2.png");
+  }
+  75%,
+  100% {
+    background-image: url("/images/character/majo_f_3.png");
+  }
+}
+@keyframes majo_back {
+  0%,
+  24% {
+    background-image: url("/images/character/majo_b_2.png");
+  }
+  25%,
+  49% {
+    background-image: url("/images/character/majo_b_1.png");
+  }
+  50%,
+  74% {
+    background-image: url("/images/character/majo_b_2.png");
+  }
+  75%,
+  100% {
+    background-image: url("/images/character/majo_b_3.png");
+  }
+}
+@keyframes majo_left {
+  0%,
+  24% {
+    background-image: url("/images/character/majo_l_2.png");
+  }
+  25%,
+  49% {
+    background-image: url("/images/character/majo_l_1.png");
+  }
+  50%,
+  74% {
+    background-image: url("/images/character/majo_l_2.png");
+  }
+  75%,
+  100% {
+    background-image: url("/images/character/majo_l_3.png");
+  }
+}
+@keyframes majo_right {
+  0%,
+  24% {
+    background-image: url("/images/character/majo_r_2.png");
+  }
+  25%,
+  49% {
+    background-image: url("/images/character/majo_r_1.png");
+  }
+  50%,
+  74% {
+    background-image: url("/images/character/majo_r_2.png");
+  }
+  75%,
+  100% {
+    background-image: url("/images/character/majo_r_3.png");
+  }
+}
+
+.viewContainer {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  &__onElement {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    padding: 20px;
+    z-index: 20;
+  }
+  &__playerElement {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    .u-player {
+      user-select: none;
+      position: absolute;
+      // top: calc(((100vw / 24) * (1 + 0 * 2)) / 2);
+      // left: calc(((100vw / 24) * (1 + 0 * 2)) / 2);
+      transform: translate(-50%, -50%);
+      width: calc((100vw / 24) - 5px);
+      height: calc((100vw / 24) - 5px);
+      background-size: contain;
+      background-repeat: no-repeat;
+      transition: all 0.3s linear;
+      &.is-front,
+      &.is-back,
+      &.is-right,
+      &.is-left {
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+      &.is-front {
+        background-image: url("/images/character/majo_f_2.png");
+        animation-name: majo_front;
+      }
+      &.is-back {
+        animation-name: majo_back;
+        background-image: url("/images/character/majo_b_2.png");
+      }
+      &.is-left {
+        animation-name: majo_left;
+        background-image: url("/images/character/majo_l_2.png");
+      }
+      &.is-right {
+        animation-name: majo_right;
+        background-image: url("/images/character/majo_r_2.png");
+      }
+    }
+  }
+  &__bgElement {
+    position: relative;
+    &--row {
+      display: flex;
+      align-items: center;
+    }
+    &--cell {
+      user-select: none;
+      width: calc(100vw / 24);
+      height: calc(100vw / 24);
+      // border: 1px solid black;
+      position: relative;
+      background-size: cover;
+      background-repeat: no-repeat;
+      &.is-block {
+        background-color: grey;
+      }
+      &.is-umi {
+        animation-name: umi;
+        animation-duration: 1s;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+}
