@@ -43,10 +43,6 @@ const ViewContainerBgElementMemo = memo(function ViewContainerBgElement() {
 })
 
 const Player = ({ isPlayer, position }: Player) => {
-  useEffect(() => {
-    // console.log("useEffect")
-    // console.log(document.getElementById("player")?.offsetTop, window.innerHeight)
-  }, [position])
   return (
     <div id="player" className={`u-player ${isPlayer}`} style={{ top: `calc(((100vw / 24) * (1 + ${position.y} * 2)) / 2)`, left: `calc(((100vw / 24) * (1 + ${position.x} * 2)) / 2)` }}></div>
   )
@@ -64,10 +60,10 @@ const Home: NextPage = () => {
       const downResult = nextTop && nextTop + elHeight > windowHeight
       const upResult = nextTop && nextTop < 0
       if (downResult) {
-        animateScroll.scrollMore(elHeight, { duration: 300 })
+        animateScroll.scrollMore(windowHeight - (elHeight * 2), { duration: 300 })
       }
       if (upResult) {
-        animateScroll.scrollMore(-elHeight, { duration: 300 })
+        animateScroll.scrollMore(-windowHeight + (elHeight * 2), { duration: 300 })
       }
       return
     }
